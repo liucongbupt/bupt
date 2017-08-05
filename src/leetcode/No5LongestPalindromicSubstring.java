@@ -50,7 +50,40 @@ public class No5LongestPalindromicSubstring {
         return s.substring(rl, rr + 1);
     }
 
+    public static boolean ispalindrome1(String s){
+        if (s.length()==0||s.length()==1)
+            return true;
+        if (s.charAt(0)==s.charAt(s.length()-1)){
+            return ispalindrome1(s.substring(1,s.length()-1));
+        }else {
+            return false;
+        }
+    }
+    public static boolean ispalindrome2(String s){
+        if (s.length()==0||s.length()==1)
+            return true;
+        StringBuilder sb = new StringBuilder(s);
+        sb.reverse();
+        return s.equals(sb.toString());
+    }
+    public static boolean ispalindrome3(String s){
+        int i = 0;
+        int j = s.length()-1;
+        while (i<j){
+            if (s.charAt(i)!=s.charAt(j))
+                return false;
+            i++;
+            j--;
+
+        }
+        return true;
+    }
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("abcda"));
+        System.out.println(ispalindrome1("abcba"));
+        System.out.println(ispalindrome2("abcba"));
+        System.out.println(ispalindrome3("abcba"));
+        System.out.println(ispalindrome1("abcda"));
+        System.out.println(ispalindrome2("abcda"));
+        System.out.println(ispalindrome3("abcda"));
     }
 }

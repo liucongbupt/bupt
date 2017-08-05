@@ -9,44 +9,44 @@ package leetcode;
 public class No4MedianofTwoSortedArrays {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int m = nums1.length, n = nums2.length;
-        if (m > n) {
-            return findMedianSortedArrays(nums2, nums1);
-        }//make sure that m is small than n;
+        int n = nums1.length,m = nums2.length;
+        if(m < n)
+            return findMedianSortedArrays(nums2,nums1);
 
-        int i, min = 0;
-        int j, max = m;
+        int i=0,j=0;
+        int imin = 0,imax = n;
 
-        int halfLength = (m + n + 1) / 2;
+        int half = (m+n+1)/2;
 
-        while (min <= max) {
-            i = (min + max) / 2;
-            j = halfLength - i;
+        while(imin<=imax){
+            i = (imin+imax)/2;
+            j = half - i;
 
-            if (j > 0 && i < m && nums1[i] < nums2[j - 1])
-                min = i + 1;
-            else if (i > 0 && j < n && nums2[j] < nums1[i - 1])
-                max = i - 1;
-            else {
-                double maxOfLeft;
-                if (i == 0)
-                    maxOfLeft = nums2[j - 1];
-                else if (j == 0)
-                    maxOfLeft = nums1[i - 1];
+            if(i>0 && nums1[i-1]>nums2[j]){
+                imax = i-1;
+            }else if(i<n && nums1[i]<nums2[j-1]){
+                imin = i+1;
+            }else{
+                double maxLeft = 0;
+                if(i==0)
+                    maxLeft = nums2[j-1];
+                else if(j==0)
+                    maxLeft = nums1[i-1];
                 else
-                    maxOfLeft = nums1[i - 1] > nums2[j - 1] ? nums1[i - 1] : nums2[j - 1];
+                    maxLeft = Math.max(nums1[i-1],nums2[j-1]);
 
-                if ((m + n) % 2 == 1)
-                    return maxOfLeft;
+                if((m+n)%2==1)
+                    return maxLeft;
 
-                double minOfRight;
-                if (i == m)
-                    minOfRight = nums2[j];
-                else if (j == n)
-                    minOfRight = nums1[i];
+                double minRight = 0;
+                if(i==n)
+                    minRight = nums2[j];
+                else if(j==m)
+                    minRight = nums1[i];
                 else
-                    minOfRight = nums1[i] < nums2[j] ? nums1[i] : nums2[j];
-                return (minOfRight + maxOfLeft) / 2;
+                    minRight = Math.min(nums1[i],nums2[j]);
+
+                return (maxLeft+minRight)/2;
             }
         }
         return 0;

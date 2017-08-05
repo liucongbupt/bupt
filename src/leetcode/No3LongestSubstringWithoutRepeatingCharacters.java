@@ -12,29 +12,27 @@ import java.util.Map;
  **/
 public class No3LongestSubstringWithoutRepeatingCharacters {
     public static int lengthOfLongestSubstring(String s) {
-        int  max = 0;
-        Map<Character, Integer> map = new HashMap<>();
-        int start = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))){
-                start = Math.max(start,map.get(s.charAt(i))+1);
-            }
-            map.put(s.charAt(i),i);
-            max = Math.max(max,i-start+1);
+        HashMap<Character,Integer> map = new HashMap<>();
+        int start = -1;
+        int max = 0;
+        for(int end=0;end<s.length();end++){
+            if(map.containsKey(s.charAt(end)))
+                start = Math.max(start,map.get(s.charAt(end)));
+            map.put(s.charAt(end),end);
+            max = Math.max(max,end-start);
         }
         return max;
     }
     public int lengthOfLongestSubstring1(String s) {
+        int[] map = new int[256];
+        Arrays.fill(map,-1);
+        int start = -1;
         int max = 0;
-        int start = 0;
-        int[] dp = new int[256];
-        Arrays.fill(dp,-1);
-        for(int i = 0;i<s.length();i++){
-            char t = s.charAt(i);
-            if(dp[t]!=-1)
-                start = Math.max(start,dp[t]+1);
-            dp[s.charAt(i)]=i;
-            max = Math.max(max,i-start+1);
+        for(int end=0;end<s.length();end++){
+            if(map[s.charAt(end)]!=-1)
+                start = Math.max(start,map[s.charAt(end)]);
+            map[s.charAt(end)] = end;
+            max = Math.max(max,end-start);
         }
         return max;
     }
