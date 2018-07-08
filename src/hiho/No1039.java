@@ -15,6 +15,9 @@ public class No1039 {
         char[] change = {'A', 'B', 'C'};
         StringBuilder input = new StringBuilder(sb);
         StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < input.length() + 1; j++) {
