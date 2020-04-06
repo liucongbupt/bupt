@@ -20,7 +20,7 @@ public class No49GroupAnagrams {
             Arrays.sort(tmp);
             String s = String.valueOf(tmp);
             if (!map.containsKey(s)){
-                map.put(s,new ArrayList<>());
+                map.put(s,new ArrayList<String>());
             }
             map.get(s).add(strs[i]);
         }

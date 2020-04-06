@@ -12,7 +12,7 @@ import java.util.List;
 public class No131PalindromePartitioning {
     public List<List<String>> partition(String s) {
         List<List<String>> rtn = new ArrayList<>();
-        backTracking(rtn,new ArrayList<>(),s,0);
+        backTracking(rtn,new ArrayList<String>(),s,0);
         return rtn;
     }
     public void backTracking(List<List<String>> rtn,List<String> str,String s,int idx){

@@ -1,7 +1,6 @@
 package Interview;
 
 import com.sun.deploy.util.ArrayUtil;
-import com.sun.tools.javac.util.ArrayUtils;
 
 import java.lang.reflect.Array;
 

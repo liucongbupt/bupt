@@ -50,6 +50,11 @@ public class No341FlattenNestedListIterator {
         }
 
         @Override
+        public void remove() {
+
+        }
+
+        @Override
         public Integer next() {
             return list.remove(0);
         }

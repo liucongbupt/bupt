@@ -32,7 +32,7 @@ public class No40CombinationSumII {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
         List<List<Integer>> rtn = new ArrayList<List<Integer>>();
-        back_tracking(rtn, new ArrayList<>(),candidates,target,0);
+        back_tracking(rtn, new ArrayList<Integer>(),candidates,target,0);
         return rtn;
     }
     public void back_tracking(List<List<Integer>> result,List<Integer> cur,int[] candidates,int target,int start){

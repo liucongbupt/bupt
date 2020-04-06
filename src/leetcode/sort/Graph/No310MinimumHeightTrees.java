@@ -113,7 +113,7 @@ public class No310MinimumHeightTrees {
         }
         HashMap<Integer,Set<Integer>> G = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            G.put(i, new HashSet<>());
+            G.put(i, new HashSet<Integer>());
         }
         for (int i = 0; i < edges.length; i++) {
             G.get(edges[i][0]).add(edges[i][1]);

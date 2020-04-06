@@ -16,7 +16,7 @@ public class No39CombinationSum {
         if (nums==null||nums.length==0)
             return list;
         Arrays.sort(nums);
-        backtrack(list, new ArrayList<>(), nums, target, 0);
+        backtrack(list, new ArrayList<Integer>(), nums, target, 0);
         return list;
     }
 
